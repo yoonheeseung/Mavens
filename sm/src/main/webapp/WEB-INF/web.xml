@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	                    http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" 
+	version="3.0">
+	
+	
+	<!-- 프로젝트 명 -->
+		<display-name>sm</display-name>
+	
+	<!-- 초기파일 지정 -->
+	<welcome-file-list>
+	    <welcome-file>index.html</welcome-file>
+	    <welcome-file>index.htm</welcome-file>
+	    <welcome-file>index.jsp</welcome-file>
+	    <welcome-file>default.html</welcome-file>
+	    <welcome-file>default.htm</welcome-file>
+	    <welcome-file>default.jsp</welcome-file>
+    </welcome-file-list>
+	
+	<!-- spring 개발환경 설정 -->
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- method=post방식으로 넘어오는 한글자료를 안깨지게함 
+	     즉 request.setCharacterEncoding("UTF-8");을 하지않아도
+	     된다. method=get방식일 경우는 한글이 깨진다. 그러므로,
+	     String클래스의 getBytes()메서드로 한글을 안깨지게 해야 한다.-->
+	
+	<!-- 스프링 서블릿 설정 -->
+	<servlet>
+    <servlet-name>sp</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>sp</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>    
+  <!-- sp-servlet.xml 파일로드. 스프링 웹 mvc로드 웹의 확장자는 do로 끝난다. -->
+	</web-app>
