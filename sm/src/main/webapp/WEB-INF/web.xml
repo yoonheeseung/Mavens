@@ -55,4 +55,17 @@
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>    
   <!-- sp-servlet.xml 파일로드. 스프링 웹 mvc로드 웹의 확장자는 do로 끝난다. -->
-	</web-app>
+	
+  <!-- 스프링에서 디비연동 관련 XML파일 로드 설정부분 -->
+	 <listener>		
+	<listener-class>
+	org.springframework.web.context.ContextLoaderListener
+	</listener-class>
+	</listener>		
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring-mybatis-oracle.xml</param-value>
+	</context-param>
+	<!-- spring-mybatis-oracle.xml 파일 로드 . 스프링과 mybatis+오라클 디비 연동 xml -->
+	
+</web-app>

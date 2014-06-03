@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <%-- html5 언어코등 타입 --%>
 <title>자료실 글쓰기</title>
-<link rel="stylesheet" type="text/css" href="./css/bbs.css" />
+<link rel="stylesheet" type="text/css" href="./cs/bbs.css" />
 <script type="text/javascript" src="./js/jquery.js"></script>
 <script type="text/javascript" src="./js/bbs.js"></script>
 </head>
@@ -50,7 +50,7 @@
 				    </td>
 				</tr>
 				<tr>
-					<th>
+					<th>내용</th>
 					<td>
 					 <textarea name="bbs_cont" id="bbs_cont" rows="9" cols="34"></textarea>
 					</td>
@@ -66,6 +66,8 @@
 				<input type="submit" value="저장" class="input_b" /> 
 				<input type="reset" value="취소" class="input_b"
 					 onclick="$('#bbs_name').focus();" />
+			  <input type="button" value="목록" class="input_b" 
+			         onclick="location='bbs_list.do'" />
 			</div>
 		</form>
 	</div>

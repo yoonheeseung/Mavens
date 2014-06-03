@@ -1,20 +1,181 @@
 package com.naver.action;
 
+import java.io.File;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Random;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.naver.dao.BbsDAO;
+import com.naver.model.BbsBean;
+import com.oreilly.servlet.MultipartRequest;
 
 @Controller
 //@Controller 어노테이션은 implements Controller를 하지 않아도
 //쉽게 스프링 컨트롤 클래스를 만들수 있게 한다.
 public class BbsAction {
 
+	private BbsDAO bbsService;
+	
+	public void setBbsService(BbsDAO bbsService) {
+		this.bbsService = bbsService;
+	}//setter  DI 의존관계 설정
+	
 	/* 자료실 글쓰기 */
 	@RequestMapping(value="/bbs_write.do",method=RequestMethod.GET)
 	//get방식으로 접근할때 호출되는 어노테이션
-	public String bbs_write(){
+	public String bbs_write(HttpServletRequest request, Model wm){
+		int page=1;
+		if(request.getParameter("page") !=null){
+			page=Integer.parseInt(request.getParameter("page"));
+		}
+		wm.addAttribute("page", page);
+		
 		return "bbs/bbs_write";
 		//jsp/bbs/bbs_write.jsp 뷰페이지가 실행
 	}
+
+   /* 자료실 저장 */
+	@RequestMapping(value="/bbs_write_ok.do",method=RequestMethod.POST)
+	//post방식일때 호출되는 어노테이션
+	public String bbs_write_ok(HttpServletRequest request,
+			     @ModelAttribute BbsBean b)
+	 throws Exception{
+		String saveFolder="C:/Users/unisung/git/Mavens/sm/src/main/webapp/upload";//이진파일 업로드 경로
+		int fileSize=5*1025*1024;//이진파일 업로드 최대크기,5mb
+		MultipartRequest multi=null;//이진파일 업로드 변수선언
+		multi=new MultipartRequest(request, saveFolder, fileSize, "utf-8");
+		//이진파일 업로드 multi객체 생성
+		//생성자 첫번째 전달인자 request는 사용자폼에서 입력한 것을 서버로 전달
+		//두번째 전달인자는 이진파일 업로드 서버 경로
+		//세번째 전달인자는 이진파일 최대크기
+		//네번째 전달인자는 언어코딩 타입
+		
+		String bbs_name=multi.getParameter("bbs_name").trim();
+		String bbs_title=multi.getParameter("bbs_title").trim();
+		String bbs_pwd=multi.getParameter("bbs_pwd").trim();
+		String bbs_cont=multi.getParameter("bbs_cont").trim();
+		
+		File UpFile=multi.getFile("bbs_file");//첨부한 이진파일을 가져옴.
+		
+		if(UpFile !=null){
+			String fileName=UpFile.getName();//첨부한 이진파일명을 구함
+			Calendar c=Calendar.getInstance();
+			String year=String.format("%04d", c.get(Calendar.YEAR));//년도
+			String month=String.format("%02d",c.get(Calendar.MONTH)+1);//월
+			//0으로 반환되기 때문이다.
+			String date=String.format("02d",c.get(Calendar.DATE));//일
+			
+		String homedir=saveFolder+"/"+year+"-"+month+"-"+date;
+		//새로운 이진파일 폴더 경로를 저장
+		File path1=new File(homedir);
+		if(!(path1.exists())){//폴더경로가 없으면
+			path1.mkdir();//폴더생성
+		}
+		Random r=new Random();//난수를 발생시키는 클래스
+		int random=r.nextInt(100000000);
+		//1억사이의 정수형 난수를 발생시킴
+		/********** 확장자 구하기 *******************/
+		int index=fileName.lastIndexOf(".");
+		//File 클래스의 getName()메서드는 이진파일명을 받아온다.
+		//lastIndexOf("문자")는 String클래스의 메서드로 해당문자
+		//를 문자열 끝 즉 우츠에서 헤아려 문자의 위치번로를 반환한다.
+		String fileExtension=fileName.substring(index +1);
+		//파일의 확장자를 구한다.
+		/*********** 확장자 구하기 끝 *********************/
+		String refileName="bbs"+year+month+date+random+"."+fileExtension;//새로운 파일명을 저장
+		System.out.println("새로운파일명:"+refileName);
+		String fileDBName="/"+year+"-"+month+"-"+date+"/"+refileName;//데이터베이스에 저장될 레코드 값
+		System.out.println("데이터베이스파일명:"+fileDBName);
+		
+		System.out.println(UpFile.renameTo(new File(homedir+"/"+refileName)));
+		
+		//새롭게 생성된 폴더에 바뀐 이진파일명으로 업로드
+		b.setBbs_file(fileDBName);
+		}else{//이진파일을 첨부하지 않았을 때
+			String fileDBName="";//첨부하지 않은 경우는 빈공백을 저장시킴
+			b.setBbs_file(fileDBName);
+		}
+			
+		b.setBbs_name(bbs_name);
+		b.setBbs_title(bbs_title);
+		b.setBbs_pwd(bbs_pwd);
+		b.setBbs_cont(bbs_cont);
+		
+		this.bbsService.insertBbs(b);//저장메서드 호출
+		
+		return "redirect:/bbs_list.do";
+	}
 	
+	/* 자료실 목록 */
+	@RequestMapping(value="/bbs_list.do")
+	public String bbs_list(Model listM,	@ModelAttribute BbsBean b, HttpServletRequest request)
+	 throws Exception{
+		
+		int page=1;
+		int limit=10;
+		
+		String find_field=null;
+		String find_name=null;
+		
+		if(request.getParameter("find_name")!=null){
+			find_name=request.getParameter("find_name").trim();
+            find_name= new String(find_name.getBytes("ISO-8859-1"),"utf-8");
+		}
+		find_field=request.getParameter("find_field");
+		b.setFind_field(find_field);
+		b.setFind_name("%"+find_name+"%");
+		
+		
+		if (request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+
+		
+		// 총 레코드 개수를 반환
+				int listcount = this.bbsService.getListCount(b);
+				
+				b.setStartrow((page - 1) * 10 + 1);
+				b.setEndrow(b.getStartrow() + limit - 1);
+
+				List<BbsBean> blist = this.bbsService.getBbsList(b);
+				// 방명록 목록
+
+				// 총 페이지 수.
+				int maxpage = (int) ((double) listcount / limit + 0.95); // 0.95를 더해서 올림
+																			// 처리.
+				// 현재 페이지에 보여줄 시작 페이지 수(1, 11, 21 등...)
+				int startpage = (((int) ((double) page / 10 + 0.9)) - 1) * 10 + 1;
+				// 현재 페이지에 보여줄 마지막 페이지 수.(10, 20, 30 등...)
+				int endpage = maxpage;
+
+				if (endpage > startpage + 10 - 1)
+					endpage = startpage + 10 - 1;
+
+				
+				listM.addAttribute("blist", blist);
+				listM.addAttribute("page", page);
+				listM.addAttribute("startpage", startpage);
+				listM.addAttribute("endpage", endpage);
+				listM.addAttribute("maxpage", maxpage);
+				listM.addAttribute("listcount", listcount);
+				/* paging 끝 */
+				listM.addAttribute("find_field",find_field);
+				//find_field 키값에 board_title,board_cont저장
+				listM.addAttribute("find_name", find_name);
+				//find_name 키값에 검색어를 저장
+		
+		return "bbs/bbs_list";
+		//bbs폴더의 bbs_list.jsp 뷰페이지로 이동
+	}
+
 }
+
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration  
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-config.dtd"> 
+
+<configuration>
+  <typeAliases>
+   <typeAlias alias="bbs" type="com.naver.model.BbsBean" />
+   <!-- 이 부분을 자바 언어로 표현하면 
+     com.naver.model.BbsBean bbs=new com.naver.model.BbsBean();
+     과 같다. 새로운 객체명 bbs를 만듬. -->
+  </typeAliases>     
+</configuration>
+
