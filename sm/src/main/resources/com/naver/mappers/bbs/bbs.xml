@@ -58,4 +58,29 @@
 		<!-- &gt; 은 ~보다 크다(>), &lt; 은 ~보다 작다(<) -->
  </select>
  
+ <!-- 조회수 증가 -->
+ <update id="bbs_hit" parameterType="int">
+  update bbs
+     set bbs_hit=bbs_hit+1
+   where bbs_no=#{bbs_no}
+ </update>
+ 
+ <!-- 수정폼+내용보기+삭제폼+답변글폼 -->
+ <select id="bbs_cont" parameterType="int" resultType="bbs">
+  select * from bbs where bbs_no=#{bbs_no}
+ </select>
+ 
+ <!-- 답변글 레벨 증가 -->
+ <update id="bbsLevel" parameterType="bbs">
+ update bbs set bbs_level=bbs_level+1
+  where bbs_ref=#{bbs_ref}
+    and bbs_level>#{bbs_level}
+ </update>
+ 
+ <!-- 답변 저장 -->
+ <insert id="bbs_reply" parameterType="bbs">
+ insert into bbs(bbs_no,bbs_name,bbs_title,bbs_pwd,bbs_cont,bbs_ref,bbs_step,bbs_level,bbs_date)
+  values(bbs_no_seq.nextval,#{bbs_name},#{bbs_title},#{bbs_pwd},#{bbs_cont},#{bbs_ref},#{bbs_step}+1,#{bbs_level}+1,sysdate)
+ </insert>
+ 
  </mapper>

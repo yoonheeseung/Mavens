@@ -38,5 +38,19 @@ public class BbsDAOImpl implements BbsDAO {
 	public List<BbsBean> getBbsList(BbsBean b) {
 		return sqlSession.selectList("Bbs.bbs_list", b);
 	}
+	/* 조회수 증가 */
+	public void updateHit(int bbs_no) {
+		sqlSession.update("Bbs.bbs_hit", bbs_no);
+	}
+	/* 내용보기+수정폼+답변글폼+삭제폼 */
+	public BbsBean getCont(int bbs_no) {
+	    return sqlSession.selectOne("Bbs.bbs_cont", bbs_no);
+	}
+	/* 답변 저장 */
+	public void reply(BbsBean b) {
+		sqlSession.update("Bbs.bbsLevel", b);//답변글 레벨증가
+		sqlSession.insert("Bbs.bbs_reply",b);//답변 저장
+		
+	}
 	
 }

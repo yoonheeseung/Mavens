@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.naver.dao.BbsDAO;
 import com.naver.model.BbsBean;
@@ -175,7 +177,58 @@ public class BbsAction {
 		return "bbs/bbs_list";
 		//bbs폴더의 bbs_list.jsp 뷰페이지로 이동
 	}
+	
+	/*내용보기+수정폼+삭제폼+답변글폼*/
+	@RequestMapping(value="/bbs_cont.do")
+	public ModelAndView bbs_cont(HttpServletRequest request,
+			@RequestParam("bbs_no") int bbs_no,
+			@RequestParam("state") String state)
+		throws Exception{
+		int page=1;
+		if(request.getParameter("page") !=null){
+			page=Integer.parseInt(request.getParameter("page"));
+		}
+		if(state.equals("cont")){//내용보기일때 조회수 증가
+			this.bbsService.updateHit(bbs_no);
+		}
+		
+		BbsBean b=this.bbsService.getCont(bbs_no);
+		//글번호를 기준으로 디비로 부터 내용을 가져옴.
+		String bbs_cont=b.getBbs_cont().replace("\n", "<br/>");
+		//textarea 박스에서 엔터키 친 부분을 다음 줄로 개행
+		
+		ModelAndView bm=new ModelAndView();
+		bm.addObject("b",b);
+		bm.addObject("bbs_cont",bbs_cont);
+		bm.addObject("page",page);
+		
+		if(state.equals("cont")){
+			bm.setViewName("./bbs/bbs_cont");
+		}else if(state.equals("reply")){//답변글 폼일때
+			bm.setViewName("./bbs/bbs_reply");
+		}else if(state.equals("edit")){//수정폼
+			bm.setViewName("./bbs/bbs_edit");
+		}else if(state.equals("del")){//삭제폼
+			bm.setViewName("./bbs/bbs_del");
+		}
+		return bm;
+	}
 
+	/* 답변 저장 */
+	@RequestMapping(value="bbs_reply_ok.do")
+	public String bbs_reply_ok(HttpServletRequest request,
+			@ModelAttribute BbsBean b)
+			throws Exception{
+		
+		int page=1;
+		if(request.getParameter("page")!=null){
+			page=Integer.parseInt(request.getParameter("page"));
+		}
+		this.bbsService.reply(b);//답변 저장 메서드
+		
+		return "redirect://bbs_list.do?page="+page;
+	}
+			
 }
 
 
