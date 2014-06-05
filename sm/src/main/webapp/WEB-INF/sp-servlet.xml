@@ -20,10 +20,8 @@
 
 
 	<!-- Controller -->
-	<bean id="bbsAction" class="com.naver.action.BbsAction" 
-		p:bbsService-ref="bbsService"/>
-	<!-- p:bbsService-ref="bbsService" 부분이 스프링에서
-	    setter DI 의존관계를 설정하는 부분 -->
+	<bean id="bbsAction" class="com.naver.action.BbsAction" p:bbsService-ref="bbsService"/>
+	<!-- p:bbsService-ref="bbsService" 부분이 스프링에서 setter DI 의존관계를 설정하는 부분 -->
 	
 	<!-- ViewResolver -->
 	<bean id="internalResourceViewResolver"
