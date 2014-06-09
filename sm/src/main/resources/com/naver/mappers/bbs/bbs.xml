@@ -83,4 +83,16 @@
   values(bbs_no_seq.nextval,#{bbs_name},#{bbs_title},#{bbs_pwd},#{bbs_cont},#{bbs_ref},#{bbs_step}+1,#{bbs_level}+1,sysdate)
  </insert>
  
+ <!-- 자료실 수정 -->
+ <update id="bbs_edit" parameterType="bbs">
+ update bbs 
+    set bbs_name=#{bbs_name}, bbs_title=#{bbs_title}, bbs_cont=#{bbs_cont}, bbs_file=#{bbs_file}
+  where bbs_no=#{bbs_no}
+ </update>
+ 
+ <!-- 자료실 삭제 -->
+ <delete id="bbs_del" parameterType="int">
+  delete bbs where bbs_no=#{bbs_no} 
+ </delete>
+ 
  </mapper>

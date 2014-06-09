@@ -50,7 +50,15 @@ public class BbsDAOImpl implements BbsDAO {
 	public void reply(BbsBean b) {
 		sqlSession.update("Bbs.bbsLevel", b);//답변글 레벨증가
 		sqlSession.insert("Bbs.bbs_reply",b);//답변 저장
-		
+	}
+	/* 수정 */
+	public void updateBbs(BbsBean b) {
+		sqlSession.update("Bbs.bbs_edit",b);//수정
+		//Bbs는 네임스페이스 이름, bbs_edit는 update 아이디 이름
+	}
+	/* 삭제 */
+	public void del(int bbs_no) {
+		sqlSession.update("Bbs.bbs_del",bbs_no);
 	}
 	
 }

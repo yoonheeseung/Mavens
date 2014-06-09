@@ -15,10 +15,11 @@
 		    /bbs_list.do=bbsAction
 		    /bbs_cont.do=bbsAction
 		    /bbs_reply_ok.do=bbsAction
+		    /bbs_edit_ok.do=bbsAction
+		    /bbs_del_ok.do=bbsAction
 			</value>
 		</property>
 	</bean>
-
 
 	<!-- Controller -->
 	<bean id="bbsAction" class="com.naver.action.BbsAction" p:bbsService-ref="bbsService"/>

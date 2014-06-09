@@ -18,3 +18,5 @@ create sequence bbs_no_seq
 increment by 1 start with 1 nocache;
 
 select * from bbs order by bbs_no desc;
+
+select * from bbs where bbs_ref=23;

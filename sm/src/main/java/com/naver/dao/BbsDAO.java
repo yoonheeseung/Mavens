@@ -17,6 +17,10 @@ public interface BbsDAO {
 	BbsBean getCont(int bbs_no);//내용보기+수정폼+답변글폼+삭제폼
 
 	void reply(BbsBean b);//답변 저장
+
+	void updateBbs(BbsBean b);//수정
+
+	void del(int bbs_no);//삭제
 	
 	
 	
