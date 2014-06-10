@@ -17,11 +17,18 @@
 		    /bbs_reply_ok.do=bbsAction
 		    /bbs_edit_ok.do=bbsAction
 		    /bbs_del_ok.do=bbsAction
+		    
+		    <!-- 관리자 메인 -->
+		    /admin_index.do=adminAction
+		    /admin_ok.do=adminAction
+		    /admin_main.do=adminAction
+		    /admin_logout.do=adminAction
 			</value>
 		</property>
 	</bean>
 
 	<!-- Controller -->
+	<bean id="adminAction" class="com.naver.action.AdminAction" p:adminService-ref="adminService" />
 	<bean id="bbsAction" class="com.naver.action.BbsAction" p:bbsService-ref="bbsService"/>
 	<!-- p:bbsService-ref="bbsService" 부분이 스프링에서 setter DI 의존관계를 설정하는 부분 -->
 	

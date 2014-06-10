@@ -9,6 +9,7 @@
    <!-- 이 부분을 자바 언어로 표현하면 
      com.naver.model.BbsBean bbs=new com.naver.model.BbsBean();
      과 같다. 새로운 객체명 bbs를 만듬. -->
+  <typeAlias alias="admin" type="com.naver.model.AdminBean"/>
   </typeAliases>     
 </configuration>
 
