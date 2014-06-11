@@ -27,6 +27,11 @@
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean><!-- mybatis ORM DB 연동 프레임웍 연결 -->	
 	
+	<!-- 관리자 자료실 -->
+	<bean id="adminbbsService" class="com.naver.dao.AdminBbsDAOImpl">
+	<property name="sqlSession" ref="sqlSession" />
+	</bean>
+	
 	<!-- mybatis orm 연결 xml:자료실 -->
 	<bean id="bbsService" class="com.naver.dao.BbsDAOImpl">
 	 	<property name="sqlSession" ref="sqlSession" />

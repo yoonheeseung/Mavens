@@ -65,7 +65,13 @@
 	text-align:center;
 }
 #bList_count{
-	mrgin:20px 20px 0 600px;
+	margin:20px 20px 0 600px;
+	font-size:12px;
+	font-weight:bold;
+	border:1px solid #ccc;
+	border-radius:8px;
+	text-align:center;
+	background-color: #ccc;
 }
 a:link{
 	text-decoration: none;
