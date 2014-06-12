@@ -29,11 +29,20 @@
 		    /admin_bbs_write.do=adminbbsAction
 		    /admin_bbs_write_ok.do=adminbbsAction
 		    /admin_bbs_cont.do=adminbbsAction
+		    /admin_bbs_edit_ok.do=adminbbsAction
+		    /admin_bbs_del_ok.do=adminbbsAction
+		    
+		    <!-- 사용자 게시판 -->
+		    /board_write.do=boardAction
+		    /board_write_ok.do=boardAction
+		    /board_list.do=boardAction
+		    
 			</value>
 		</property>
 	</bean>
 
 	<!-- Controller -->
+	<bean id="boardAction" class="com.naver.action.BoardAction" p:boardService-ref="boardService" />
 	<bean id="adminbbsAction" class="com.naver.action.AdminBbsAction" p:adminbbsService-ref="adminbbsService" />
 	<bean id="adminAction" class="com.naver.action.AdminAction" p:adminService-ref="adminService" />
 	<bean id="bbsAction" class="com.naver.action.BbsAction" p:bbsService-ref="bbsService"/>
