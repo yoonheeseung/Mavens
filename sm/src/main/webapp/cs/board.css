@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+
+/* board_write.jsp ui */
+#BWrite_wrap{
+	width:430px; heigth:420px;
+	border:1px solid blue;
+	border-radius:15px;
+	box-shadow:20px 20px 20px #ccc;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:20px;
+}
+#BWrite_wrap .BWrite_title{
+	margin:20px 0 0 140px; width:150px;
+	background:pink; border-radius:15px;
+	font-size:20px; padding:3px; text-align:center;
+}
+#BWrite_t{
+	margin:20px 0 0 25px;
+}
+#BWrite_menu{
+	margin:15px 0 0 150px;
+}
+
+/*board_cont.jsp ui*/
+#BCont_wrap{
+	width:
+}

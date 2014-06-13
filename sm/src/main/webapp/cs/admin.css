@@ -1,0 +1,117 @@
+@CHARSET "UTF-8";
+
+#admin_wrap{
+ width:360px;
+ height:160px;
+ border:1px solid blue;
+ border-radius:15px;
+ box-shadow:20px 20px 20px #ccc;
+ margin-left:auto;
+ margin-right:auto;
+ margin-top:160px;
+}
+#admin_wrap .admin_title{
+	margin:20px 0 0 100px;
+	width:150px;
+	font-size:20px;
+	background:pink;
+	border-radius:15px;
+	text-align:center;
+	padding:3px;
+}
+#admin_t{
+	margin:20px 0 0 18px;
+}
+.input_s{
+	width:70px;
+	height:70px;
+	border-radius:15px;
+	font-weight:bold;
+	border:1px solid red;
+}
+.input_s:hover{
+	cursor:hand;
+	cursor:pointer;
+}
+.box{
+	border:1px solid pink;
+	border-radius:15px;
+}
+.box:hover{
+	background:#ccc;
+}
+
+/* admin_main.jsp ui */
+#aMain_wrap{
+	width:960px; height:760px;
+	border:1px solid blue;
+	border-radius:15px;
+	box-shadow:20px 20px 20px skyblue;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:30px;
+}
+#aMain_header{
+	width:940px;
+	height:160px;
+	border:1px solid red;
+	border-radius:15px;
+	margin:10px 0 0 10px;
+}
+#aMain_logo{
+	width:140px; height:140px;
+	border:1px solid blue;
+	border-radius:15px;
+	margin:10px 0 0 10px;
+	float:left;
+}
+#aMain_logo img{
+	width:100px; height:50px;
+	margin:41px 0 0 18px;
+}
+#aMain_menu{
+	width:450px; height:140px;
+	border:1px solid blue;
+	border-radius:15px;
+	margin:10px 0 0 10px;
+	float:left;
+}
+#aMain_menu ul li{
+	lit-style:none; float:left;
+	margin:100px 0 0 13px;
+	padding:0px 7px;
+}
+#aMain_right{
+	width:304px; height:140px;
+	border:1px solid blue;
+	border-radius:15px;
+	margin:10px 0 0 10px; 
+	float:left;
+}
+#aMain_right .aMain_title, .input_b{
+	font-size:11px;
+	text-align:center;
+}
+#aMain_cont{
+	width:940px; height:500px;
+	border:1px solid red;
+	border-radius:15px;
+	margin:10px 0 0 10px;
+}
+.clear{
+	clear:both;
+}
+#aMain_cont .aMainCont_title{
+	font-size:18px;
+	margin:200px 0 0 350px;
+}
+#aMain_footer{
+	width:940px; height:56px;
+	border:1px solid red;
+	border-radius:15px;
+	margin:10px 0 0 10px;
+}
+#aMain_footer .afooter_title{
+	font-size:16px;
+	margin:15px 0 0 50px;
+}

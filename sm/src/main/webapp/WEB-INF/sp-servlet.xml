@@ -36,7 +36,7 @@
 		    /board_write.do=boardAction
 		    /board_write_ok.do=boardAction
 		    /board_list.do=boardAction
-		    
+		    /board_cont.do=boardAction	    
 			</value>
 		</property>
 	</bean>

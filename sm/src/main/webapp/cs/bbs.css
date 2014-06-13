@@ -19,7 +19,7 @@
 	border-radius:15px;
 	font-size:20px;
 	text-align:center;
-	padding:3px;/ * 안 상하좌우 여백을 3픽셀 */
+	padding:3px; /* 안상하좌우 여백을 3픽셀 */
 }
 #bWrite_t{
 	margin:20px 0 0 30px;
@@ -65,7 +65,7 @@
 	text-align:center;
 }
 #bList_count{
-	margin:20px 20px 0 600px;
+	margin:20px 20px 0 500px;
 	font-size:12px;
 	font-weight:bold;
 	border:1px solid #ccc;
