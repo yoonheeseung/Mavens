@@ -1,8 +1,10 @@
 package com.naver.action;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -140,4 +142,74 @@ public class BoardAction {
 				return bm;
 	}
 	
+	/*관리자 답변 저장 */
+	@RequestMapping(value="/board_reply_ok.do")
+	public String board_reply_ok(@ModelAttribute BoardBean rb, 
+			HttpServletRequest request)
+	  throws Exception{
+		int page=1;
+		if(request.getParameter("page")!=null){
+			page=Integer.parseInt(request.getParameter("page"));
+		}
+		this.boardService.reply(rb);//답변저장
+		
+		return "redirect:/board_list_do?page="+page;	
+	}
+	
+	 /*게시판 수정*/
+    @RequestMapping(value="/board_edit_ok.do")
+    public String board_edit_ok(@ModelAttribute BoardBean b,
+    		HttpServletRequest request,
+    		HttpServletResponse response)
+    throws Exception{
+    	response.setContentType("text/html;charset=UTF-8");
+    	PrintWriter out=response.getWriter();
+    	
+    	int page=1;
+    	if(request.getParameter("page") != null){
+         page=Integer.parseInt(request.getParameter("page"));    		
+    	}
+BoardBean db_pwd=
+   this.boardService.getBoardCont(b.getBoard_no());
+//디비로 부터 비번을 가져옴
+        if(db_pwd.getBoard_pwd().equals(b.getBoard_pwd())){
+    	this.boardService.editBoard(b);//수정
+    	return "redirect:/board_cont.do?board_no="+
+    	b.getBoard_no()+"&page="+page+"&state=cont";
+        }else{
+        	out.println("<script>");
+        	out.println("alert('비번이 다릅니다!')");
+        	out.println("history.back()");
+        	out.println("</script>");
+        }
+        return null;
+    }
+    
+    /*게시판 삭제*/
+    @RequestMapping(value="/board_del_ok.do")
+    public String board_del_ok(
+    		@RequestParam("page") int page,
+    		@RequestParam("del_pwd") String del_pwd,
+    		@ModelAttribute BoardBean b,
+    		HttpServletResponse response) throws Exception{
+    	response.setContentType("text/html;charset=UTF-8");
+    	PrintWriter out=response.getWriter();
+    	
+    	BoardBean db_pwd=
+  			this.boardService.getBoardCont(b.getBoard_no());
+    	//디비로 부터 비번을 가져옴.
+    	if(!db_pwd.getBoard_pwd().equals(del_pwd)){
+    		out.println("<script>");
+    		out.println("alert('비번이 다릅니다!')");
+    		out.println("history.back()");
+    		out.println("</script>");
+    	}else{
+    		this.boardService.deleteBoard(b.getBoard_no());
+    		//삭제
+    		return "redirect:/board_list.do?page="+page;
+    	}
+    	return null;
+    }
+    
+    
 }

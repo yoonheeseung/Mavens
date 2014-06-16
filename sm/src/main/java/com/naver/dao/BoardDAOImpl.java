@@ -38,7 +38,21 @@ public class BoardDAOImpl implements BoardDAO{
 	public void updateHit(int board_no) {
 	 sqlSession.update("Board.board_hit", board_no);
 	}
+
+	/* 답변 저장 */
+	public void reply(BoardBean rb) {
+		sqlSession.update("Board.boardrb_update",rb);
+		sqlSession.insert("Board.boardrb_in", rb);
+	}
 	
-	
+	/* 게시판 수정 */
+	public void editBoard(BoardBean b) {
+		sqlSession.update("Board.board_edit", b);
+	}
+
+	/* 게시판 삭제 */
+	public void deleteBoard(int board_no) {
+		sqlSession.delete("Board.board_del", board_no);
+	}
 
 }

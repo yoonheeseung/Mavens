@@ -309,8 +309,20 @@ public class BbsAction {
 			//새롭게 생성된 폴더로 바뀐 이진파일명으로 업로드
 			b.setBbs_file(fileDBName);
 		}else{
-			b.setBbs_file(db_pwd.getBbs_file());
-			//첨부하지 않은 경우는 기존이진파일명으로 저장.
+			if(db_pwd.getBbs_file() !=null){
+				b.setBbs_file(db_pwd.getBbs_file());
+				//첨부하지 않은 경우는 기존이진파일명으로 저장.
+			}else{
+				String bbs_file="";
+				b.setBbs_file(bbs_file);
+			}
+			/*
+			 * null을 자바 jdbc에서는 수정 저장 되지만,
+			 * ibatis와 mybatis xml에서는 기존 null값을 저장 수정하면
+			 * sql예외 오류를 발생 시킨다.
+			 * null대신 빈 공백을 저장시키면 null로 저장된다.
+			 * 
+			 */
 		}
 		b.setBbs_name(bbs_name);
 		b.setBbs_title(bbs_title);

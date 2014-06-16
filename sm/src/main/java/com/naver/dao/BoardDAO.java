@@ -16,6 +16,11 @@ public interface BoardDAO {
 	BoardBean getBoardCont(int board_no);//내용보기+수정폼+삭제폼+답변글
 
 	void updateHit(int board_no);//조회수 증가
-		
+
+	void reply(BoardBean rb);//답변저장
+	
+	void editBoard(BoardBean b);//게시판 수정
+
+	void deleteBoard(int board_no);//게시판 삭제
 
 }

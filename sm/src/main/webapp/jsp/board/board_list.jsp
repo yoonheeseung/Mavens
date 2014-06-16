@@ -19,7 +19,7 @@
 </script>
 </head>
 <body>
-<form action="board_list.do" onsubmit="return find_check();">
+<form action="admin_board_list.do" onsubmit="return find_check();">
 <%-- method속성을 생략하면 기본으로 get방식 --%>
   <div id="bList_wrap">   
     <h2 class="bList_title">게시판 목록</h2>
@@ -59,7 +59,7 @@
                 <img src="./images/AnswerLine.gif"/>
                 <%--답변글 이미지 출력 --%>
               </c:if>
- 			<a href="board_cont.do?board_no=${list.board_no}&page=${page}&state=cont" 
+ 			<a href="admin_board_cont.do?board_no=${list.board_no}&page=${page}&state=cont" 
               onfocus="this.blur();">${list.board_title}</a>        
  <%-- *.do?no=번호값&page=쪽번호&state=cont get방식으로 3개의
  피라미터값을 웹주소창에 노출해서 넘김. 
@@ -93,7 +93,7 @@
 			[이전]&nbsp;
 			</c:if>
 			<c:if test = "${page > 1 }">
-			<a href="board_list.do?page=${page-1}&find_field=${find_field}&find_name=${find_name}">[이전]</a>&nbsp;
+			<a href="admin_board_list.do?page=${page-1}&find_field=${find_field}&find_name=${find_name}">[이전]</a>&nbsp;
 			</c:if>	
 			
 			
@@ -103,7 +103,7 @@
 				</c:if>
 				
                 <c:if test = "${a != page}">
-				 <a href="board_list.do?page=${a}&find_field=${find_field}&find_name=${find_name}">[${a}]</a>&nbsp;
+				 <a href="admin_board_list.do?page=${a}&find_field=${find_field}&find_name=${find_name}">[${a}]</a>&nbsp;
 				</c:if>
 			</c:forEach>	
 			
@@ -112,7 +112,7 @@
 			 [다음]
 			</c:if>
 			<c:if test = "${page < maxpage }">
-			 <a href="board_list.do?page=${page+1}&find_field=${find_field}&find_name=${find_name}">[다음]</a>
+			 <a href="admin_board_list.do?page=${page+1}&find_field=${find_field}&find_name=${find_name}">[다음]</a>
 			</c:if>
 	      </c:if>
 	  <!-- 검색후 페이징 끝 -->
@@ -123,7 +123,7 @@
 			[이전]&nbsp;
 			</c:if>
 			<c:if test = "${page > 1 }">
-			<a href="board_list.do?page=${page-1}">[이전]</a>&nbsp;
+			<a href="admin_board_list.do?page=${page-1}">[이전]</a>&nbsp;
 			</c:if>	
 			
 			
@@ -135,7 +135,7 @@
 				
                 <c:if test = "${a != page}">
                 <%--해당 쪽번호가 선택 안된 경우 실행 --%>
-				 <a href="board_list.do?page=${a}">[${a}]</a>&nbsp;
+				 <a href="admin_board_list.do?page=${a}">[${a}]</a>&nbsp;
 				</c:if>
 			</c:forEach>	
 			
@@ -144,7 +144,7 @@
 			 [다음]
 			</c:if>
 			<c:if test = "${page < maxpage }">
-			 <a href="board_list.do?page=${page+1}">[다음]</a>
+			 <a href="admin_board_list.do?page=${page+1}">[다음]</a>
 			</c:if>
 	    </c:if>
 	    <!-- 검색전 페이징(쪽나누기) 끝 -->
@@ -153,13 +153,13 @@
 	
 	<div id="list_menu">
 	   	<input type="button" value="글쓰기" class="input_b"
-		onclick="location='board_write.do?page=${page}'" />	
+		onclick="location='admin_board_write.do?page=${page}'" />	
 		<%-- 검색전 전체 레코드를 검색해서 전체 레코드를 페이징
 		할 목록으로 이동할 버튼을 만든다.이럴경우는 get방식으로
 		find_name과 find_field를 넘기면 안된다. --%>
      <c:if test="${(!empty find_field) && (!empty find_name)}">		
 		<input type="button" value="전체목록"
-		onclick="location='board_list.do?page=${page}'"
+		onclick="location='admin_board_list.do?page=${page}'"
 		class="input_b" />	
 	</c:if>
    </div>    

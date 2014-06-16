@@ -338,10 +338,16 @@ public class AdminBbsAction {
 					UpFile.renameTo(new File(homedir + "/" + refileName));
 
 					b.setBbs_file(fileDBName);
+					
 					System.out.println("fileName:" + fileName);
-				} else {
-					b.setBbs_file(db_pwd.getBbs_file());
+				} else {//첨부하지 않은 경우
+					if(db_pwd.getBbs_file() !=null){
+					b.setBbs_file(db_pwd.getBbs_file());//기존 이진파일을 가져와 저장
 					System.out.println(db_pwd.getBbs_file());
+					}else{
+						String bbs_file="";
+						b.setBbs_file(bbs_file);
+					}
 				}
 				b.setBbs_no(bbs_no);
 				b.setBbs_name(bbs_name);

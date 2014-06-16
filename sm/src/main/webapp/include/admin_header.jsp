@@ -9,8 +9,10 @@
 <link rel="stylesheet" type="text/css" href="./cs/admin.css" />
 <link rel="stylesheet" type="text/css" href="./cs/bbs.css" />
 <link rel="stylesheet" type="text/css" href="./cs/admin_bbs.css" />
+<link rel="stylesheet" type="text/css" href="./cs/board.css" />
 <script src="./js/jquery.js"></script>
 <script type="text/javascript" src="./js/bbs.js"></script>
+<script src="./js/board.js"></script>
 <script>
  function find_check(){
 	 if($.trim($("#find_name").val())==""){

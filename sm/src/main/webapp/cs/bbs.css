@@ -2,85 +2,71 @@
 
 /* bbs_write.jsp ui */
 #bWrite_wrap{
-	width:420px;
-	height:430px;
+	width:420px; height:410px;
 	border:1px solid blue;
 	border-radius:20px;
 	box-shadow:20px 20px 20px #ccc;
-	margin-left:auto;
-	margin-right:auto;
-	/* div 수평 중앙 정렬 */
+	margin-left:auto; margin-right:auto;
+	/* div 수평 중앙 정렬*/
 	margin-top:100px;
 }
 #bWrite_wrap .bWrite_title{
-	margin:20px 0 0 140px;
-	width:160px;
-	background:pink;
-	border-radius:15px;
-	font-size:20px;
-	text-align:center;
-	padding:3px; /* 안상하좌우 여백을 3픽셀 */
+	margin:20px 0 0 130px; width:160px;
+	background:pink; border-radius:15px;
+	font-size:20px; text-align:center;
+	padding:3px;/*안 상하좌우 여백을 3픽셀*/
 }
 #bWrite_t{
 	margin:20px 0 0 30px;
 }
 #bWrite_t th{
-	background:pink;
-	border-radius:15px;
+	background:pink; border-radius:15px;
 }
 .box{
-	border:1px solid pink;
-	border-radius:15px;
+	border:1px solid pink; border-radius:15px;padding:2px;
 }
 .box:hover{
-	background:#ccc;
+	background:#ccc; 
 }
 #bWrite_menu{
-	margin:20px 0 0 150px;
+	margin:20px 0 0 155px;
 }
 .input_b{
 	border:1px solid red;
 	border-radius:15px;
-	font-weight:bold;
+	font-weight:bold; 
 }
 .input_b:hover{
-	cursor:pointer;cursor:hand;
+	cursor:pointer; cursor:hand;
 }
 
-/* bbs_list.jsp ui */
+/*bbs_list.jsp ui */
 #bList_wrap{
-	width:600px; padding:15px;
+	width:700px; padding:15px;
 	border:1px solid blue; border-radius:20px;
 	box-shadow:15px 15px 15px #ccc;
-	margin-left:300px; margin-right:auto;
+	margin-left:auto; margin-right:auto;
 	margin-top:100px;
 }
 #bList_wrap .bList_title{
-	margin:20px 0 0 250px;
-	width:130px;
-	font-size:20px;
-	background:pink;
-	padding:3px;
-	border-radius:15px;
+	margin:20px 0 0 270px; width:130px; font-size:20px;
+	background:pink; padding:3px; border-radius:15px;
 	text-align:center;
 }
 #bList_count{
-	margin:20px 20px 0 500px;
-	font-size:12px;
-	font-weight:bold;
-	border:1px solid #ccc;
-	border-radius:8px;
-	text-align:center;
-	background-color: #ccc;
+	margin:20px 20px 0 600px;
+}
+#bList_t{
+	margin:20px 0 0 50px;
 }
 a:link{
-	text-decoration: none;
+	text-decoration:none;
 }
-a:active{/*클릭시*/
+a:active{
 	text-decoration:none;
 }
 a:visited{
-	text-decoration: none;
+	text-decoration:none;
 }
 a:hover{
 	text-decoration:underline;
@@ -92,51 +78,53 @@ a:hover{
 	margin:20px 0 0 200px;
 }
 #list_menu{
-	margin:20px 0 0 510px;
+	margin:20px 0 0 610px;
 }
 #list_find{
-	margin:20px 0 15px 180px;
+	margin:20px 0 15px 230px;
 }
 
 /* bbs_cont.jsp ui */
 #bCont_wrap{
 	width:500px; padding:10px;
-	border:1px solid blue;
-	border-radius:20px;
+	border:1px solid blue; border-radius:20px;
 	box-shadow:20px 20px 20px #ccc;
-	margin-left:auto;
-	margin-right:auto;
+	margin-left:auto; margin-right:auto;
 	margin-top:100px;
 }
 #bCont_wrap .bCont_title{
-	margin:15px 0 0 170px;
-	width:180px;
-	font-size:20px;
-	background:pink;
-	border-radius:15px;
+	margin:15px 0 0 170px; width:160px; font-size:20px;
+	background:pink; border-radius:15px;
 	text-align:center;
 }
 #bCont_t{
 	margin:15px 0 0 20px;
 }
 
-/*자료실 삭제 */
+/* 자료실 삭제 */
 #bDel_wrap{
-	width:240px; height:180px;
+	width:240px; height:160px;
 	border:1px solid blue; border-radius:15px;
 	box-shadow:20px 20px 20px #ccc;
-	margin-left:auto;
-	margin-right:auto;
+	margin-left:auto; margin-right:auto;
 	margin-top:100px;
 }
 #bDel_wrap .bDel_title{
-	margin:20px 0 0 60px;
-	width:120px;
-	font-size:20px;text-align:center;
-	padding:2px;
-	background:pink;
-	border-radius:15px;
+	margin:20px 0 0 60px; width:120px;
+	font-size:20px; text-align:center;
+	padding:2px; background:pink; border-radius:15px;
 }
 #bDel_t{
 	margin:20px 0 0 25px;
 }
+
+
+
+
+
+
+
+
+
+
+
