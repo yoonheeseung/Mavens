@@ -48,11 +48,23 @@
 			/admin_board_cont.do=adminboardAction
 			/admin_board_edit.do=adminboardAction
 			/admin_board_edit_ok.do=adminboardAction
+			/admin_board_del_ok.do=adminboardAction
+			
+			<!-- 사용자 회원관리 -->
+			/member_login.do=memberAction
+			/member_join.do=memberAction
+			/join_idcheck.do=memberAction
+			/zip_find.do=memberAction
+			/zip_find_ok.do=memberAction
+			/member_join_ok.do=memberAction
+			/pwd_find.do=memberAction
+			/pwd_find_ok.do=memberAction
 			</value>
 		</property>
 	</bean>
 
 	<!-- Controller -->
+	<bean id="memberAction" class="com.naver.action.MemberAction" p:memberService-ref="memberService" />
 	<bean id="adminboardAction" class="com.naver.action.AdminBoardAction" p:adminboardService-ref="adminboardService" />
 	<bean id="boardAction" class="com.naver.action.BoardAction" p:boardService-ref="boardService" />
 	<bean id="adminbbsAction" class="com.naver.action.AdminBbsAction" p:adminbbsService-ref="adminbbsService" />

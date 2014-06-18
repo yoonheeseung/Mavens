@@ -32,6 +32,11 @@
 	<property name="sqlSession" ref="sqlSession" />
 	</bean>
 	
+	<!-- 사용자 회원관리 -->
+	<bean id="memberService" class="com.naver.dao.MemberDAOImpl">
+	<property name="sqlSession" ref="sqlSession"/>
+	</bean>
+	
 	<!-- 관리자 게시판 -->
 	<bean id="adminboardService" class="com.naver.dao.AdminBoardDAOImpl">
 	 <property name="sqlSession" ref="sqlSession" /> 

@@ -375,7 +375,6 @@ public class BbsAction {
 		}
 		return null;
 	}
-	
 }
 
 

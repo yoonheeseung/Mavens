@@ -11,6 +11,11 @@
      과 같다. 새로운 객체명 bbs를 만듬. -->
   <typeAlias alias="admin" type="com.naver.model.AdminBean"/>
   <typeAlias alias="board" type="com.naver.model.BoardBean"/>
+  <typeAlias alias="member" type="com.naver.model.MemberBean"/>
+  <typeAlias alias="phone" type="com.naver.model.PhoneBean"/>
+  <typeAlias alias="email" type="com.naver.model.EmailBean"/>
+  <typeAlias alias="zip" type="com.naver.model.ZipcodeBean"/>
+  <typeAlias alias="zip2" type="com.naver.model.ZipcodeBean2"/>
   </typeAliases>     
 </configuration>
 
