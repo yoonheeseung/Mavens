@@ -59,6 +59,11 @@
 			/member_join_ok.do=memberAction
 			/pwd_find.do=memberAction
 			/pwd_find_ok.do=memberAction
+			/member_login_ok.do=memberAction
+			/index.do=memberAction
+			/member_logout.do=memberAction
+			/member_edit.do=memberAction
+			/member_edit_ok.do=memberAction
 			</value>
 		</property>
 	</bean>
