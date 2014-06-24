@@ -9,74 +9,98 @@
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<value>
-		    <!-- 사용자 자료실 -->
-		    /bbs_write.do=bbsAction
-		    /bbs_write_ok.do=bbsAction
-		    /bbs_list.do=bbsAction
-		    /bbs_cont.do=bbsAction
-		    /bbs_reply_ok.do=bbsAction
-		    /bbs_edit_ok.do=bbsAction
-		    /bbs_del_ok.do=bbsAction
-		    
-		    <!-- 관리자 메인 -->
-		    /admin_index.do=adminAction
-		    /admin_ok.do=adminAction
-		    /admin_main.do=adminAction
-		    /admin_logout.do=adminAction
-		    
-		    <!-- 관리자 자료실 -->
-		    /admin_bbs_list.do=adminbbsAction
-		    /admin_bbs_write.do=adminbbsAction
-		    /admin_bbs_write_ok.do=adminbbsAction
-		    /admin_bbs_cont.do=adminbbsAction
-		    /admin_bbs_edit_ok.do=adminbbsAction
-		    /admin_bbs_del_ok.do=adminbbsAction
-		    
-		    <!-- 사용자 게시판 -->
-		    /board_write.do=boardAction
-		    /board_write_ok.do=boardAction
-		    /board_list.do=boardAction
-		    /board_cont.do=boardAction	
-		    /board_reply_ok.do=boardAction
-			/board_edit_ok.do=boardAction
-			/board_del_ok.do=boardAction
-				
+				<!-- 사용자 자료실 -->
+				/bbs_write.do=bbsAction
+				/bbs_write_ok.do=bbsAction
+				/bbs_list.do=bbsAction
+				/bbs_cont.do=bbsAction
+				/bbs_reply_ok.do=bbsAction
+				/bbs_edit_ok.do=bbsAction
+				/bbs_del_ok.do=bbsAction
+
+				<!-- 관리자 메인 -->
+				/admin_index.do=adminAction
+				/admin_ok.do=adminAction
+				/admin_main.do=adminAction
+				/admin_logout.do=adminAction
+
+				<!-- 관리자 자료실 -->
+				/admin_bbs_list.do=adminbbsAction
+				/admin_bbs_write.do=adminbbsAction
+				/admin_bbs_write_ok.do=adminbbsAction
+				/admin_bbs_cont.do=adminbbsAction
+				/admin_bbs_edit_ok.do=adminbbsAction
+				/admin_bbs_del_ok.do=adminbbsAction
+
+				<!-- 사용자 게시판 -->
+				/board_write.do=boardAction
+				/board_write_ok.do=boardAction
+				/board_list.do=boardAction
+				/board_cont.do=boardAction
+				/board_reply_ok.do=boardAction
+				/board_edit_ok.do=boardAction
+				/board_del_ok.do=boardAction
+
 				<!-- 관리자 게시판 -->
-			/admin_board_list.do=adminboardAction
-			/admin_board_write.do=adminboardAction
-			/admin_board_write_ok.do=adminboardAction
-			/admin_board_cont.do=adminboardAction
-			/admin_board_edit.do=adminboardAction
-			/admin_board_edit_ok.do=adminboardAction
-			/admin_board_del_ok.do=adminboardAction
-			
-			<!-- 사용자 회원관리 -->
-			/member_login.do=memberAction
-			/member_join.do=memberAction
-			/join_idcheck.do=memberAction
-			/zip_find.do=memberAction
-			/zip_find_ok.do=memberAction
-			/member_join_ok.do=memberAction
-			/pwd_find.do=memberAction
-			/pwd_find_ok.do=memberAction
-			/member_login_ok.do=memberAction
-			/index.do=memberAction
-			/member_logout.do=memberAction
-			/member_edit.do=memberAction
-			/member_edit_ok.do=memberAction
+				/admin_board_list.do=adminboardAction
+				/admin_board_write.do=adminboardAction
+				/admin_board_write_ok.do=adminboardAction
+				/admin_board_cont.do=adminboardAction
+				/admin_board_edit.do=adminboardAction
+				/admin_board_edit_ok.do=adminboardAction
+				/admin_board_del_ok.do=adminboardAction
+
+				<!-- 사용자 회원관리 -->
+				/member_login.do=memberAction
+				/member_join.do=memberAction
+				/join_idcheck.do=memberAction
+				/zip_find.do=memberAction
+				/zip_find_ok.do=memberAction
+				/member_join_ok.do=memberAction
+				/pwd_find.do=memberAction
+				/pwd_find_ok.do=memberAction
+				/member_login_ok.do=memberAction
+				/index.do=memberAction
+				/member_logout.do=memberAction
+				/member_edit.do=memberAction
+				/member_edit_ok.do=memberAction
+				/member_del.do=memberAction
+				/member_del_ok.do=memberAction
+
+				<!-- 관리자 회원관리 -->
+				/admin_member_list.do=adminmemberAction
+				/admin_member_info.do=adminmemberAction
+				/admin_member_edit_ok.do=adminmemberAction
+				/admin_member_del.do=adminmemberAction
+
+				<!-- 관리자 공지사항 -->
+				/admin_gongji_list.do=admingongjiAction
+				/admin_gongji_write.do=admingongjiAction
+				/admin_gongji_write_ok.do=admingongjiAction
+				/admin_gongji_cont.do=admingongjiAction
+
 			</value>
 		</property>
 	</bean>
 
 	<!-- Controller -->
-	<bean id="memberAction" class="com.naver.action.MemberAction" p:memberService-ref="memberService" />
-	<bean id="adminboardAction" class="com.naver.action.AdminBoardAction" p:adminboardService-ref="adminboardService" />
-	<bean id="boardAction" class="com.naver.action.BoardAction" p:boardService-ref="boardService" />
-	<bean id="adminbbsAction" class="com.naver.action.AdminBbsAction" p:adminbbsService-ref="adminbbsService" />
-	<bean id="adminAction" class="com.naver.action.AdminAction" p:adminService-ref="adminService" />
-	<bean id="bbsAction" class="com.naver.action.BbsAction" p:bbsService-ref="bbsService"/>
+	<bean id="admingongjiAction" class="com.naver.action.AdminGongjiAction" p:admingongjiService-ref="admingongjiService" />
+	<bean id="adminmemberAction" class="com.naver.action.AdminMemberAction"
+		p:adminmemberService-ref="adminmemberService" />
+	<bean id="memberAction" class="com.naver.action.MemberAction"
+		p:memberService-ref="memberService" />
+	<bean id="adminboardAction" class="com.naver.action.AdminBoardAction"
+		p:adminboardService-ref="adminboardService" />
+	<bean id="boardAction" class="com.naver.action.BoardAction"
+		p:boardService-ref="boardService" />
+	<bean id="adminbbsAction" class="com.naver.action.AdminBbsAction"
+		p:adminbbsService-ref="adminbbsService" />
+	<bean id="adminAction" class="com.naver.action.AdminAction"
+		p:adminService-ref="adminService" />
+	<bean id="bbsAction" class="com.naver.action.BbsAction"
+		p:bbsService-ref="bbsService" />
 	<!-- p:bbsService-ref="bbsService" 부분이 스프링에서 setter DI 의존관계를 설정하는 부분 -->
-	
+
 	<!-- ViewResolver -->
 	<bean id="internalResourceViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

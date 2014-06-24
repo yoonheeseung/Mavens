@@ -5,6 +5,7 @@
 
 <configuration>
   <typeAliases>
+  <typeAlias alias="gongji" type="com.naver.model.GongjiBean"/>
    <typeAlias alias="bbs" type="com.naver.model.BbsBean" />
    <!-- 이 부분을 자바 언어로 표현하면 
      com.naver.model.BbsBean bbs=new com.naver.model.BbsBean();

@@ -13,6 +13,7 @@
 <script src="./js/jquery.js"></script>
 <script type="text/javascript" src="./js/bbs.js"></script>
 <script src="./js/board.js"></script>
+<script src="./js/gongji.js"></script>
 <script>
  function find_check(){
 	 if($.trim($("#find_name").val())==""){
