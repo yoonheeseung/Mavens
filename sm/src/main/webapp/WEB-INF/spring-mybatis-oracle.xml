@@ -32,6 +32,11 @@
 	<property name="sqlSession" ref="sqlSession" />
 	</bean>
 	
+	<!-- 사용자 공지사항 -->
+	<bean id="gongjiService" class="com.naver.dao.GongjiDAOImpl">
+	<property name="sqlSession" ref="sqlSession" />
+	</bean>
+	
 	<!-- 관리자 공지사항 -->
 	<bean id="admingongjiService" class="com.naver.dao.AdminGongjiDAOImpl">
 	<property name="sqlSession" ref="sqlSession" />

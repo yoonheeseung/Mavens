@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="Gongji">
+<!-- 최신 공지목록 5개 -->
+ <select id="ig_list" resultType="gongji">
+ 
+ select  *
+   from 
+ (select rownum, gongji_no, gongji_title, gongji_date from gongji order by gongji_no desc)
+  where rownum &lt;6
+ <!--  &lt; 은 ~보다 작다(<) -->
+ </select>
+ 
+ <update id="ig_count" parameterType="int">
+  update gongji 
+     set gongji_hit=gongji_hit+1
+   where gongji_no=#{gongji_no}
+ </update>
+ 
+ <!-- 공지내용 -->
+ <select id="ig_cont" parameterType="int" resultType="gongji">
+ select * from gongji where gongji_no=#{gongji_no}
+ </select>
+ 
+ <!-- 공지 총 개수 -->
+  <select id="ig_count2" resultType="int">
+   select count(gongji_no) from gongji
+  </select>
+  
+  <!-- 공지 목록 -->
+  <select id="ig_list2" parameterType="gongji"  resultType="gongji">
+    select *
+		from
+		(select rowNum rNum, gongji_no, gongji_name,
+		 gongji_title, gongji_hit, gongji_date from
+		(select * from gongji			
+		order by gongji_no desc
+		 ))
+		where rNum&gt;=#{startrow} and rNum&lt;=#{endrow}
+		<!-- &gt; 은 ~보다 크다(>), &lt; 은 ~보다 작다(<) --> 
+  </select>
+</mapper>

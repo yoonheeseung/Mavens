@@ -1,0 +1,107 @@
+@CHARSET "UTF-8";
+
+/* member_login.jsp ui */
+#login_wrap{
+	width:300px; height:140px;
+	border:1px solid blue; border-radius:20px;
+	box-shadow:20px 20px 20px #ccc;
+	margin-left:auto; margin-right:auto;
+	margin-top:100px;
+}
+#login_t{
+	margin:20px 0 0 20px;
+}
+.input_s{
+	width:50px; height:50px; border:1px solid red;
+	border-radius:15px; font-weight:bold;
+}
+.input_s:hover{
+	cursor:hand; cursor:pointer;
+}
+#login_menu{
+	margin:20px 0 0 70px;
+}
+
+/* member_join.jsp ui */
+#join_wrap{
+	width:540px; height:430px; border:1px solid blue;
+	border-radius:20px; box-shadow:20px 20px 20px #ccc;
+	margin-left:auto; margin-right:auto;
+	margin-top:100px;
+}
+#join_wrap .join_title{
+	margin:30px 0 0 210px; width:100px; font-size:20px;
+	background:pink; text-align:center;
+	border-radius:15px;
+}
+#join_t{
+	margin:20px 0 0 25px;
+}
+#join_menu{
+	margin:30px 0 0 200px;
+}
+
+/* 비번 찾기*/
+#pwd_wrap{
+	width:230px; height:170px; border:1px solid blue;
+	border-radius:15px; box-shadow:20px 20px 20px #ccc;
+	margin-left:auto; margin-right:auto;
+	margin-top:40px;
+}
+#pwd_wrap .pwd_title{
+	margin:20px 0 0 70px;
+	width:90px;
+	font-size:19px;
+	background:pink;
+	border-radius:15px;
+	text-align:center;
+	padding:3px;
+}
+
+#pwd_t{
+	margin:20px 0 0 10px;
+}
+#pwd_menu{
+	margin:20px 0 0 6px;
+}
+
+/*비번찾기*/
+#pwd_wrap{
+	width:230px; height:190px; border:1px solid blue;
+	border-radius:15px; box-shadow:20px 20px 20px #ccc;
+	margin-left:auto; margin-right:auto;
+	margin-top:40px;
+}
+#pwd_wrap .pwd_title{
+	margin:20px 0 0 70px; width:90px; font-size:19px;
+	background:pink; border-radius:15px;
+	text-align:center; padding:3px;
+}
+#pwd_t{
+	margin:20px 0 0 10px;
+}
+#pwd_menu{
+	margin:20px 0 0 67px;
+}
+
+/* member_del.jsp ui */
+#del_wrap{
+	width:400px; height:350px; border:1px solid blue;
+	border-radius:15px; boz-shadow:20px 20px 20px #ccc;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:100px;
+}
+#del_wrap .del_title{
+	margin:20px 0 0 150px; width:100px;
+	font-size:20px;
+	background:pink; border-radius:15px;
+	padding:3px;
+	text-aglign:center;
+}
+#del_t{
+	margin:20px 0 0 10px;
+}
+#del_menu{
+	margin:20px 0 0 140px;
+}

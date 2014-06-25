@@ -78,12 +78,19 @@
 				/admin_gongji_write.do=admingongjiAction
 				/admin_gongji_write_ok.do=admingongjiAction
 				/admin_gongji_cont.do=admingongjiAction
-
+				/admin_gongji_edit.do=admingongjiAction
+				/admin_gongji_edit_ok.do=admingongjiAction
+				/admin_gongji_del_ok.do=admingongjiAction
+				
+				<!-- 사용자 공지사항 -->
+				/index_gongji.do=indexgongjiAction
+				/gongji_cont.do=indexgongjiAction
 			</value>
 		</property>
 	</bean>
 
 	<!-- Controller -->
+	<bean id="indexgongjiAction" class="com.naver.action.IndexGongjiAction" p:gongjiService-ref="gongjiService" />
 	<bean id="admingongjiAction" class="com.naver.action.AdminGongjiAction" p:admingongjiService-ref="admingongjiService" />
 	<bean id="adminmemberAction" class="com.naver.action.AdminMemberAction"
 		p:adminmemberService-ref="adminmemberService" />

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+  <mapper namespace="Member">
+
+	<select id="phone_list" resultType="phone">
+	select * from phone
+	</select>
+	
+	<select id="email_list" resultType="email">
+	select * from email
+	</select>
+	
+	<select id="id_check" parameterType="java.lang.String" resultType="member">
+	select * from member where join_id=#{join_id}
+	</select>
+	
+	<!-- 우편검색 -->
+	<select id="zip_list" parameterType="java.lang.String" resultType="zip">
+	 select * from zipcode where dong like #{dong}
+	</select>
+	
+	<!-- 회원저장 -->
+	<insert id="member_in" parameterType="member">
+	insert into member(join_id,join_pwd,join_name,join_zip,join_zip2,join_addr,join_addr2,
+	                   join_phone01,join_phone02,join_phone03,mail_id,mail_domain,join_date,
+	                   join_state)
+	            values(#{join_id},#{join_pwd},#{join_name},#{join_zip},#{join_zip2},#{join_addr},
+	                   #{join_addr2},#{join_phone01},#{join_phone02},#{join_phone03},#{mail_id},
+	                   #{mail_domain},sysdate,1)
+	</insert>
+	
+	<!-- 비번 찾기 -->
+	<select id="pwd_find" parameterType="member" resultType="member">
+	select * 
+	  from member 
+	 where join_id=#{join_id} 
+	   and join_name=#{join_name} 
+	   and join_state=1
+	</select>
+	
+	<!-- 임시 비번 수정-->
+	<update id="pwd_edit" parameterType="member">
+	 update member set join_pwd=#{join_pwd}
+	 where join_id=#{join_id}
+	</update>
+	
+	<!-- 로그인 인증 -->
+	<select id="logincheck" parameterType="String" resultType="member">
+	 select * from member
+	  where join_id=#{login_id} 
+	    and join_state=1
+	</select>
+	
+	<!-- 정보 수정 -->
+	<update id="mem_edit" parameterType="member">
+	update member
+	   set join_pwd=#{join_pwd},
+	       join_name=#{join_name},
+	       join_zip=#{join_zip},
+	       join_zip2=#{join_zip2},
+	       join_addr=#{join_addr},
+	       join_addr2=#{join_addr2},
+	       join_phone01=#{join_phone01},
+	       join_phone02=#{join_phone02},
+	       join_phone03=#{join_phone03},
+	       mail_id=#{mail_id},
+	       mail_domain=#{mail_domain}
+	      where join_id=#{join_id}
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<update id="mem_del" parameterType="member">
+	update member
+	   set join_state=2,
+	       join_delcont=#{join_delcont},
+	       join_deldate=sysdate
+	 where join_id=#{join_id}
+	</update>
+  </mapper>

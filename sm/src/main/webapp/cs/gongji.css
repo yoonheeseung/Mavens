@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+
+/* index_gongji.jsp ui */
+#igongji_wrap{
+	width:420px; padding:5px;
+	border:1px solid blue;
+	border-radius:20px;
+	box-sahdow:20px 20px 20px #ccc;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:100px;
+}
+#igongji_wrap .igongji_title{
+	margin:20px 0 0 130px;
+	width:140px; font-size:19px;
+	background:pink; border-radius:15px;
+	text-align:center;
+	padding:3px;
+}
+#igongji_t{
+	margin:20px 0 10px 30px;
+}
+a:link{
+	text-decoration:none;
+}
+a:active{
+	text-decoration:none;
+}
+a:visited{
+	text-decoration:none;
+}
+a:hove{
+	text-decodetion:underline;
+}
+
+/* gongji_cont.jsp ui */
+#gCont_wrap{
+	width:340px; border:1px solid red;
+	border-radius:17px;
+	margin-left:auto; margin-right:auto;
+	margin-top:50px;
+}
+#gCont_wrap .gCont_title{
+	margin:20px 0 0 110px; width:95px;
+	font-size:19px;
+	background:skyblue; text-align:center;
+	padding:3px; border-radius:15px;
+}
+#gCont_t{
+	margin:20px 0 10px 40px;
+}
+
